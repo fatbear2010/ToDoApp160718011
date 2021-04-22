@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_todo_list.*
 
 class TodoListFragment : Fragment() {
     private lateinit var viewModel: ListToDoViewModel
-    private val todoListAdapter = ToDoListAdapter(arrayListOf(),{ item -> doClick(item) })
+    private val todoListAdapter = ToDoListAdapter(arrayListOf(), {item -> doClick(item)} )
 
     fun doClick(item:Any) {
         viewModel.cleartask(item as Todo)
@@ -53,15 +53,12 @@ class TodoListFragment : Fragment() {
 
     private fun observeViewModel() {
         viewModel.todoLD.observe(viewLifecycleOwner, Observer {
-            viewModel.todoLD.observe(viewLifecycleOwner, Observer {
-                todoListAdapter.updateTodoList(it)
+            todoListAdapter.updateTodoList(it)
                 if(it.isEmpty()) {
                     txtEmpty.visibility = View.VISIBLE
                 } else {
                     txtEmpty.visibility = View.GONE
                 }
-            })
-
         })
     }
 }

@@ -24,12 +24,14 @@ class ListToDoViewModel (application: Application) :AndroidViewModel(application
 
     fun refresh()
     {
-        loadingLD.value = false
+        loadingLD.value = true
         todoLoadErrorLD.value = false
         launch {
             val db = Room.databaseBuilder(
                 getApplication(),
                 TodoDatabase::class.java , "newtododb").build()
+
+            todoLD.value = db.todoDao().selectAllTodo()
         }
     }
 
