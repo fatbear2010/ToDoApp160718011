@@ -15,6 +15,7 @@ import com.stefsk.todoapp160718011.R
 import com.stefsk.todoapp160718011.model.Todo
 import com.stefsk.todoapp160718011.vieModel.ListToDoViewModel
 import kotlinx.android.synthetic.main.fragment_todo_list.*
+import kotlinx.android.synthetic.main.todo_item_layout.*
 
 
 class TodoListFragment : Fragment() {

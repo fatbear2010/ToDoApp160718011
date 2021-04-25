@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
 import com.stefsk.todoapp160718011.model.Todo
 import com.stefsk.todoapp160718011.model.TodoDatabase
+import com.stefsk.todoapp160718011.util.buildDB
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -27,10 +28,8 @@ class ListToDoViewModel (application: Application) :AndroidViewModel(application
         loadingLD.value = true
         todoLoadErrorLD.value = false
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                TodoDatabase::class.java , "newtododb").build()
-
+            val db = buildDB(getApplication())
+                    //Room.databaseBuilder( getApplication(),  TodoDatabase::class.java , "newtododb").build() dari week 8
             todoLD.value = db.todoDao().selectAllTodo()
         }
     }
@@ -38,12 +37,10 @@ class ListToDoViewModel (application: Application) :AndroidViewModel(application
 
     fun cleartask(todo:Todo){
         launch { //apapun yg di lauch nanti jadi thread yg berbeda tapi punya akses ke UI
-            var db = Room.databaseBuilder(
-                getApplication(),
-                TodoDatabase::class.java, "newtododb"
-            ).build()
-            db.todoDao().deleteTodo(todo)
 
+            val db = buildDB(getApplication())
+            //var db = Room.databaseBuilder(  getApplication(),  TodoDatabase::class.java, "newtododb"  ).build() dari week 8 diganti dengan util
+            db.todoDao().idfonefun(todo.uuid,1)
             todoLD.value = db.todoDao().selectAllTodo()
         }
     }
