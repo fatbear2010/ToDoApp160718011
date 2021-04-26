@@ -20,7 +20,8 @@ class DetailToDoListViewModel (application: Application): AndroidViewModel(appli
     fun addTodo(list:List<Todo>) {
         launch {
             val db = buildDB(getApplication())
-                //Room.databaseBuilder( getApplication(), TodoDatabase::class.java, "newtododb").build()db.todoDao().insertAll(*list.toTypedArray()) // dari week 8
+                //Room.databaseBuilder( getApplication(), TodoDatabase::class.java, "newtododb").build()// dari week 8
+            db.todoDao().insertAll(*list.toTypedArray())
         }
     }
 

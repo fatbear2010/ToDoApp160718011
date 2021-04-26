@@ -40,8 +40,10 @@ class ListToDoViewModel (application: Application) :AndroidViewModel(application
 
             val db = buildDB(getApplication())
             //var db = Room.databaseBuilder(  getApplication(),  TodoDatabase::class.java, "newtododb"  ).build() dari week 8 diganti dengan util
-            db.todoDao().idfonefun(todo.uuid,1)
+            db.todoDao().isdonefun(1,todo.uuid)
             todoLD.value = db.todoDao().selectAllTodo()
         }
     }
+
+
 }

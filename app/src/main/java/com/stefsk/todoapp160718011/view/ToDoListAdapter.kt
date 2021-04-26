@@ -34,7 +34,6 @@ class ToDoListAdapter(val todoList: ArrayList<Todo>,val adapterOnClick : (Any) -
         holder.view.checkTask.setOnCheckedChangeListener { compoundButton, isChecked ->
             if(isChecked == true) {
                 adapterOnClick(todoList[position])
-                
             }
         }
 

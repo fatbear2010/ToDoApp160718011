@@ -20,6 +20,6 @@ interface TodoDao {
     suspend fun update(title:String, notes:String, priority:Int, id:Int)
 
     @Query("UPDATE todo SET is_done=:is_done WHERE uuid = :id")
-    suspend fun idfonefun(is_done:Int, id:Int)
+    suspend fun isdonefun(is_done:Int, id:Int)
 
 }

@@ -14,7 +14,7 @@ import com.stefsk.todoapp160718011.R
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = Navigation.findNavController(this,R.id.nav_host_fragment_container)
+        navController = Navigation.findNavController(this,R.id.fragmentHost)
         NavigationUI.setupActionBarWithNavController(this,navController)
     }
 
